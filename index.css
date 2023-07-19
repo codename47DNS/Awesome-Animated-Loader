@@ -1,0 +1,114 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+main {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(36, 36, 36);
+}
+
+main,
+.circle,
+.inner-circle,
+.black-circle,
+.red-circle,
+.text-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle {
+    width: 30rem;
+    height: 30rem;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+}
+
+.inner-circle,
+.black-circle,
+.text-circle {
+    width: 85%;
+    height: 85%;
+    background-color: rgba(117, 117, 117, 0.1);
+    border-radius: 50%;
+}
+
+.black-circle {
+    background-color: #000;
+    box-shadow: 0 0 1rem 0 rgb(255, 98, 98);
+    animation: hue 4s infinite linear;
+}
+
+.red-circle {
+    background-color: rgb(255, 98, 98);
+    width: 95%;
+    height: 95%;
+    border-radius: 50%;
+    position: relative;
+    filter: brightness(150%);
+}
+
+.text-circle {
+    background-color: #000;
+}
+
+.text-circle span {
+    color: white;
+    font-size: 3.2rem;
+    font-family: sans-serif;
+    animation: text 4s infinite linear;
+}
+
+.sticks {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    animation: rotate 4s infinite linear;
+    --j: calc(var(--i) * 45deg + 360deg);
+    transform: rotate(calc(var(--i) * 45deg));
+}
+
+.sticks::after {
+    content: "";
+    display: block;
+    width: 0.8rem;
+    height: 1.8rem;
+    background-color: #000;
+    border-radius: 0 0 30% 30%;
+    margin-top: -1px;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(var(--j));
+    }
+}
+
+@keyframes text {
+    50% {
+        transform: scale(0.5);
+        opacity: 0.5;
+    }
+
+    60% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes hue {
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
